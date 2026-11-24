@@ -1,15 +1,19 @@
 """Conexão com o banco de dados.
 
-Começamos com SQLite (um arquivo local, sem instalar nada).
-Para trocar por PostgreSQL depois, basta definir a variável de ambiente
-DATABASE_URL, por exemplo:
-    postgresql+psycopg://usuario:senha@localhost:5432/cobrancas
+O endereço do banco vem da variável DATABASE_URL, definida no arquivo .env
+(copie o .env.example). Exemplo para PostgreSQL:
+    postgresql+psycopg://cobrancas:cobrancas@localhost:5432/cobrancas
+
+Sem .env, usa um arquivo SQLite local (útil para testes rápidos).
 """
 
 import os
 
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
+
+load_dotenv()  # lê o arquivo .env, se existir
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./cobrancas.db")
 

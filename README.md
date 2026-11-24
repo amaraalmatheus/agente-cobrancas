@@ -8,13 +8,17 @@ e pagamentos por uma API REST e responde dúvidas como "por que fui cobrado duas
 ## Stack
 
 - Python 3.11+ e FastAPI
-- SQLAlchemy 2 com SQLite (PostgreSQL em produção)
+- PostgreSQL 17 (via Docker) e SQLAlchemy 2
 - Faker para os dados fictícios
 - pytest
 
 ## Como rodar
 
 ```bash
+# 0. Subir o PostgreSQL e criar o .env
+docker compose up -d
+cp .env.example .env
+
 # 1. Criar e ativar o ambiente virtual
 python -m venv .venv
 # Windows:
