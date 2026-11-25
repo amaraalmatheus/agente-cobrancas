@@ -4,3 +4,4 @@ psycopg[binary]>=3.2
 python-dotenv>=1.0
 faker>=30.0
 pytest>=8.0
+google-genai>=1.0
